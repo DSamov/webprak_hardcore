@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - DAOTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>DAOTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/ru.msu.cmc.webprak.html">ru.msu.cmc.webprak</a> &gt; DAOTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.771s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testClients()</td>
+<td class="success">0.718s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCommon()</td>
+<td class="success">0.599s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testEmployee()</td>
+<td class="success">0.178s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testInstances()</td>
+<td class="success">0.276s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2025-04-27T22:18:19.297+03:00  INFO 23240 --- [webprak] [    Test worker] ru.msu.cmc.webprak.DAOTests              : Starting DAOTests using Java 17.0.15 with PID 23240 (started by user in C:\Users\user\Desktop\webprak\webprak)
+2025-04-27T22:18:19.300+03:00  INFO 23240 --- [webprak] [    Test worker] ru.msu.cmc.webprak.DAOTests              : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-04-27T22:18:19.678+03:00  INFO 23240 --- [webprak] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.7.Final
+2025-04-27T22:18:19.871+03:00  INFO 23240 --- [webprak] [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-04-27T22:18:20.232+03:00  INFO 23240 --- [webprak] [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2025-04-27T22:18:20.508+03:00  WARN 23240 --- [webprak] [    Test worker] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): ru.msu.cmc.webprak.models.InstanceID
+2025-04-27T22:18:20.508+03:00  WARN 23240 --- [webprak] [    Test worker] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): ru.msu.cmc.webprak.models.InstanceID
+2025-04-27T22:18:20.508+03:00  WARN 23240 --- [webprak] [    Test worker] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): ru.msu.cmc.webprak.models.EmployeeInstanceID
+2025-04-27T22:18:20.508+03:00  WARN 23240 --- [webprak] [    Test worker] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): ru.msu.cmc.webprak.models.EmployeeInstanceID
+2025-04-27T22:18:20.508+03:00  WARN 23240 --- [webprak] [    Test worker] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): ru.msu.cmc.webprak.models.ClientInstanceID
+2025-04-27T22:18:20.508+03:00  WARN 23240 --- [webprak] [    Test worker] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): ru.msu.cmc.webprak.models.ClientInstanceID
+2025-04-27T22:18:21.035+03:00  INFO 23240 --- [webprak] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-27T22:18:21.074+03:00  INFO 23240 --- [webprak] [    Test worker] ru.msu.cmc.webprak.DAOTests              : Started DAOTests in 2.173 seconds (process running for 3.61)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.13</a> at 27 апр. 2025 г., 22:18:23</p>
+</div>
+</div>
+</body>
+</html>
