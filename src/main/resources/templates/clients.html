@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиенты</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Клиенты
+</h1>
+<div class="container">
+    <h1>Управление клиентами</h1>
+
+    <!-- Форма поиска -->
+    <div class="search-form">
+        <h2>Поиск клиентов</h2>
+        <form th:action="@{/clients}" method="get">
+            <div class="form-group">
+                <label for="surname">Фамилия:</label>
+                <input type="text" id="surname" name="surname" th:value="${searchSurname}">
+            </div>
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" th:value="${searchName}">
+            </div>
+            <div class="form-group">
+                <label for="patron">Отчество:</label>
+                <input type="text" id="patron" name="patron" th:value="${searchPatron}">
+            </div>
+            <button type="submit">Поиск</button>
+            <button type="button" onclick="location.href='/clients'">Сбросить</button>
+        </form>
+
+    <a th:href="@{/readers/add}" class="btn btn-success float-end">Добавить клиента</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.id}"></td>
+            <td th:text="${client.surname}"></td>
+            <td th:text="${client.name}"></td>
+            <td th:text="${client.patron}"></td>
+            <td>
+                <a th:href="@{/clients/{clientId}(clientId=${client.id})}" class="btn btn-primary btn-sm">Просмотр</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

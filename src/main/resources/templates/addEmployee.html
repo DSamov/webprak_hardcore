@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление служащего</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<div th:replace="~{templates :: page-header}"></div>
+
+<div class="container mt-4">
+    <h1>Добавление нового служащего</h1>
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:utext="${errorMessage}"></span>
+    </div>
+
+    <form th:action="@{/employees/add}" th:object="${newEmployee}" method="post">
+        <div class="mb-3">
+            <label for="surname" class="form-label">Фамилия*</label>
+            <input type="text" class="form-control" id="surname" th:field="*{surname}" required autocomplete="off">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Имя*</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required autocomplete="off">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="patron" class="form-label">Отчество</label>
+            <input type="text" class="form-control" id="patron" th:field="*{patron}" autocomplete="off">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('patron')}" th:errors="*{patron}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Адрес</label>
+            <input type="text" class="form-control" id="address" th:field="*{address}" autocomplete="off">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="education" class="form-label">Образование*</label>
+            <input type="text" class="form-control" id="education" th:field="*{education}" required autocomplete="off">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('education')}" th:errors="*{education}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="work_post" class="form-label">Должность*</label>
+            <input type="text" class="form-control" id="work_post" th:field="*{work_post}" required autocomplete="off">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('work_post')}" th:errors="*{work_post}"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a th:href="@{/employees}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+
+</body>
+</html>
