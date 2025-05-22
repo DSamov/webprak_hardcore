@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экземпляры услуг</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Экземпляры услуг
+</h1>
+<div class="container">
+    <h1>Управление экземплярами услуг</h1>
+
+    <!-- Форма поиска -->
+    <div class="search-form mb-4">
+        <h2>Поиск экземпляров</h2>
+        <form th:action="@{/instances}" method="get">
+            <!-- Первая строка - поля клиента -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                    <label for="clientSurname" class="form-label">Фамилия клиента:</label>
+                    <input type="text" class="form-control" id="clientSurname" name="clientSurname" th:value="${searchClientSurname}">
+                </div>
+                <div class="col-md-4">
+                    <label for="clientName" class="form-label">Имя клиента:</label>
+                    <input type="text" class="form-control" id="clientName" name="clientName" th:value="${searchClientName}">
+                </div>
+                <div class="col-md-4">
+                    <label for="clientPatron" class="form-label">Отчество клиента:</label>
+                    <input type="text" class="form-control" id="clientPatron" name="clientPatron" th:value="${searchClientPatron}">
+                </div>
+            </div>
+
+            <!-- Вторая строка - поля сотрудника -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                    <label for="employeeSurname" class="form-label">Фамилия сотрудника:</label>
+                    <input type="text" class="form-control" id="employeeSurname" name="employeeSurname" th:value="${searchEmployeeSurname}">
+                </div>
+                <div class="col-md-4">
+                    <label for="employeeName" class="form-label">Имя сотрудника:</label>
+                    <input type="text" class="form-control" id="employeeName" name="employeeName" th:value="${searchEmployeeName}">
+                </div>
+                <div class="col-md-4">
+                    <label for="employeePatron" class="form-label">Отчество сотрудника:</label>
+                    <input type="text" class="form-control" id="employeePatron" name="employeePatron" th:value="${searchEmployeePatron}">
+                </div>
+            </div>
+
+            <!-- Третья строка - поле услуги и кнопки -->
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <label for="serviceName" class="form-label">Название услуги:</label>
+                    <input type="text" class="form-control" id="serviceName" name="serviceName" th:value="${searchService}">
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">Поиск</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href='/instances'">Сбросить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <a th:href="@{/instances/add}" class="btn btn-success float-end mb-3">Добавить экземпляр</a>
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Клиент</th>
+            <th>Сотрудник</th>
+            <th>Услуга</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="instance : ${instances}">
+            <td th:text="${instance.clients.surname + ' ' + instance.clients.name + ' ' + instance.clients.patron}"></td>
+            <td th:text="${instance.employee.surname + ' ' + instance.employee.name + ' ' + instance.employee.patron}"></td>
+            <td th:text="${instance.services.name}"></td>
+            <td>
+                <a th:href="@{/instances/{clientId}/{employeeId}/{serviceId}(clientId=${instance.clients.id}, employeeId=${instance.employee.id}, serviceId=${instance.services.id})}"
+                   class="btn btn-primary btn-sm">Просмотр</a>
+                <a th:href="@{/instances/{clientId}/{employeeId}/{serviceId}/delete(clientId=${instance.clients.id}, employeeId=${instance.employee.id}, serviceId=${instance.services.id})}"
+                   class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

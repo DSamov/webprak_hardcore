@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экземпляр услуги</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<script src="/js/bootstrap.bundle.min.js"> </script>
+
+<div th:replace="~{templates :: page-header}"></div>
+
+<h1 class="display-4 text-center mb-5">
+    Информация об экземпляре услуги
+</h1>
+
+<div class="container">
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <form th:action="@{/instances/{clientId}/{employeeId}/{serviceId}/edit(clientId=${instance.clients.id}, employeeId=${instance.employee.id}, serviceId=${instance.services.id})}"
+          th:object="${instance}" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Клиент</label>
+            <input type="text" class="form-control" readonly
+                   th:value="${instance.clients.surname + ' ' + instance.clients.name + ' ' + instance.clients.patron}">
+            <a th:href="@{/clients/{clientId}(clientId=${instance.clients.id})}"
+               class="btn btn-primary btn-sm">
+               Перейти к клиенту
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Сотрудник</label>
+            <input type="text" class="form-control" readonly
+                   th:value="${instance.employee.surname + ' ' + instance.employee.name + ' ' + instance.employee.patron}">
+            <a th:href="@{/employees/{employeeId}(employeeId=${instance.employee.id})}"
+               class="btn btn-primary btn-sm">
+               Перейти к сотруднику
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Услуга</label>
+            <input type="text" class="form-control" readonly
+                   th:value="${instance.services.name}">
+        </div>
+
+        <div class="mb-3">
+            <label for="startDate" class="form-label">Дата начала</label>
+            <input type="date" class="form-control" id="startDate" th:value="${instance.start}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="finishDate" class="form-label">Дата завершения</label>
+            <input type="date" class="form-control" id="finishDate" th:value="${instance.finish}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a th:href="@{/instances}" class="btn btn-secondary">Назад к списку</a>
+    </form>
+
+</div>
+
+<div class="container">
+    <a th:href="@{/instances/{clientId}/{employeeId}/{serviceId}/delete(clientId=${instance.clients.id}, employeeId=${instance.employee.id}, serviceId=${instance.services.id})}"
+       class="btn btn-danger float-right"
+       onclick="return confirm('Вы уверены, что хотите удалить этот экземпляр услуги?')">
+        Удалить экземпляр
+    </a>
+</div>
+
+</body>
+</html>

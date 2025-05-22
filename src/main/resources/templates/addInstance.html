@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление экземпляра услуги</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<div th:replace="~{templates :: page-header}"></div>
+
+<div class="container mt-4">
+    <h1>Добавление нового экземпляра услуги</h1>
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:utext="${errorMessage}"></span>
+    </div>
+
+    <form action="/instances/add" method="post">
+        <div class="mb-3">
+            <label for="clientId" class="form-label">Клиент*</label>
+            <select class="form-select" id="clientId" name="clientId" required>
+                <option value="">Выберите клиента</option>
+                <option th:each="client : ${clients}"
+                        th:value="${client.id}"
+                        th:text="${client.surname + ' ' + client.name + ' ' + (client.patron != null ? client.patron : '')}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="employeeId" class="form-label">Сотрудник*</label>
+            <select class="form-select" id="employeeId" name="employeeId" required>
+                <option value="">Выберите сотрудника</option>
+                <option th:each="employee : ${employees}"
+                        th:value="${employee.id}"
+                        th:text="${employee.surname + ' ' + employee.name + ' ' + (employee.patron != null ? employee.patron : '')}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="serviceId" class="form-label">Услуга*</label>
+            <select class="form-select" id="serviceId" name="serviceId" required>
+                <option value="">Выберите услугу</option>
+                <option th:each="service : ${services}"
+                        th:value="${service.id}"
+                        th:text="${service.name + ' (стоимость: ' + service.cost + ')'}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="start" class="form-label">Дата начала*</label>
+            <input type="date" class="form-control" id="start" name="start" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="finish" class="form-label">Дата окончания</label>
+            <input type="date" class="form-control" id="finish" name="finish">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a th:href="@{/instances}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+
+</body>
+</html>
